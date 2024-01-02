@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climbing App Download Page</title>
+</head>
+
+<body>
+    <h1>Climbing App Download Page</h1>
+    <p>Click the link below to download the climb details:</p>
+    <a id="downloadLink" download="climb_details.txt">Download Climb Details</a>
+
+    <script>
+        // Decode the base64 content from the query parameter
+        const queryParams = new URLSearchParams(window.location.search);
+        const encodedContent = queryParams.get("data");
+        const decodedContent = atob(encodedContent);
+
+        // Set the href attribute of the download link
+        const downloadLink = document.getElementById("downloadLink");
+        downloadLink.href = "data:text/plain;charset=utf-8;base64," + btoa(decodedContent);
+        downloadLink.innerText = "Download Climb Details";
+    </script>
+</body>
+
+</html>
